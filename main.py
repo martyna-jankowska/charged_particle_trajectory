@@ -18,10 +18,11 @@ q = -1.6e-19
 m = 9e-31
 
 dt = 0.0000001
-num_steps = 1000
+num_steps = 6
 
-E = np.array([0, 1e-1, 1e-6])
+E = np.array([0, 1e-1, 0])
 B = np.array([0, 1e-7, 1e-5])
+
 
 # initialize arrays for storing position, force and velocity
 vel = np.zeros((num_steps, 3))
@@ -31,6 +32,7 @@ force = np.zeros((num_steps, 3))
 # set starting conditions
 vel[0] = np.array([0, 0, 1e6])
 force[0] = update_force(q, E, vel[0], B)
+
 
 for i in range(1, num_steps):
     pos[i] = update_position(pos[i - 1], vel[i - 1], force[i - 1], dt, m)
